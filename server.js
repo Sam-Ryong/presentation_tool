@@ -12,12 +12,14 @@ app.use(
   express.static(__dirname + "/node_modules/socket.io-client/dist/")
 );
 
+app.use(express.static(__dirname + "/public"));
+
 app.get("/admin", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index2.html");
+  res.sendFile(__dirname + "/public/index2.html");
 });
 
 io.on("connection", (socket) => {
