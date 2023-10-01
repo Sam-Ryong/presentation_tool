@@ -13,8 +13,9 @@
   <script src="/socket.io/socket.io.js"></script>
   <script>
     const socket = io();
+
     let localStream;
-    socket.on('ack', () => {
+    socket.on('frame', () => {
       captureAndSendFrame();
     })
     async function startScreenSharing() {

@@ -16,12 +16,13 @@
     const imageElement = document.getElementById('receivedImage');
 
     // 서버로부터 이미지를 받으면 이벤트를 처리합니다.
-    socket.on('frame', (imageDataUrl) => {
+    socket.emit('image');
+    socket.on('image', (imageDataUrl) => {
       console.log('이미지를 수신하였습니다.');
 
       // 이미지 요소의 src 속성에 받은 이미지 데이터를 설정하여 표시합니다.
       imageElement.src = imageDataUrl;
-      socket.emit('ack');
+      socket.emit('image');
     });
   </script>
 </body>
