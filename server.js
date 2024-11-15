@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const socketIO = require("socket.io");
+const ngrok = require("ngrok");
 
 const app = express();
 const server = http.createServer(app);
@@ -36,6 +37,9 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3000, () => {
+server.listen(80, () => {
   console.log("서버가 3000 포트에서 실행 중입니다.");
+  ngrok.connect(80).then((url) => {
+    console.log(`Ngrok tunnel is active at ${url}`);
+  });
 });
